@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Ronald Dump",
+    "country": "United Federations",
+    "strategyName": "Unpredictable Betrayer",
+    "strategyDescription": "Randomly cooperates or betrays, with a heavier bias towards betrayal.",
+    "countryType": "Economic Powerhouse",
+    "inspiration": "USA"
+  },
+  {
+    "name": "Vladislav Petrov",
+    "country": "Novo Ruska",
+    "strategyName": "Calculated Betrayer",
+    "strategyDescription": "Betrays 70% of the time, but occasionally cooperates to avoid predictability.",
+    "countryType": "Authoritarian Superpower",
+    "inspiration": "Russia"
+  },
+  {
+    "name": "Jiáng Wei",
+    "country": "People's Republic of Xina",
+    "strategyName": "Late-Game Betrayal",
+    "strategyDescription": "Cooperates early but switches to betrayal after 60% of turns.",
+    "countryType": "One-Party State",
+    "inspiration": "China"
+  },
+  {
+    "name": "Margaret Halloway",
+    "country": "Commonwealth of Albion",
+    "strategyName": "Trust but Retaliate",
+    "strategyDescription": "Cooperates unless betrayed twice in a row.",
+    "countryType": "Old Empire",
+    "inspiration": "UK"
+  },
+  {
+    "name": "Otto Eisenfeld",
+    "country": "Reichstadt Union",
+    "strategyName": "Tit-for-Tat",
+    "strategyDescription": "Mimics the opponent's last move.",
+    "countryType": "Economic Powerhouse",
+    "inspiration": "Germany"
+  },
+  {
+    "name": "Jean-Baptiste Moreau",
+    "country": "République de Nouvelle Gaulle",
+    "strategyName": "Defensive Cooperation",
+    "strategyDescription": "Cooperates unless betrayed twice, then betrays once before resuming cooperation.",
+    "countryType": "Defensive Nuclear Power",
+    "inspiration": "France"
+  },
+  {
+    "name": "Hiroshi Takada",
+    "country": "Empire of Nihon",
+    "strategyName": "Highly Cooperative",
+    "strategyDescription": "Cooperates 95% of the time, but will betray once if continuously betrayed.",
+    "countryType": "Technological Superpower",
+    "inspiration": "Japan"
+  },
+  {
+    "name": "Diego Esteban Vargas",
+    "country": "República del Sol",
+    "strategyName": "Adaptive Strategy",
+    "strategyDescription": "Starts neutral, mimics opponent if they betray too often.",
+    "countryType": "Rising Regional Power",
+    "inspiration": "Brazil"
+  },
+  {
+    "name": "Amara Okafor",
+    "country": "United Republic of Kivunda",
+    "strategyName": "Economic Opportunist",
+    "strategyDescription": "Cooperates unless an economic advantage is possible through betrayal.",
+    "countryType": "Developing Power",
+    "inspiration": "Africa"
+  },
+  {
+    "name": "Alfredo Bellucci",
+    "country": "Grand Republic of Romano",
+    "strategyName": "Betray First, Test Loyalty",
+    "strategyDescription": "Always betrays first, then tests if opponent will cooperate again.",
+    "countryType": "Old Empire, Strategic Thinker",
+    "inspiration": "Italy"
+  }
+]

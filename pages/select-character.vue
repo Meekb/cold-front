@@ -1,58 +1,65 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
 import { useGameStore } from "@/stores/useGameStore";
+import CancelGameDialog from "@/components/CancelGameDialog.vue";
 
 const gameStore = useGameStore();
-const router = useRouter();
+const worldCountries = ref([]);
+const isLoading = ref(true);
 
-const leaders = [
-    "LeaderA", "LeaderB", "LeaderC", "LeaderD", "LeaderE",
-    "Ronald Dump", "LeaderG", "LeaderH", "LeaderI", "LeaderJ"
-];
-
-const showCancelDialog = ref(false);
-
-const selectLeader = (leader: string) => {
+const selectLeader = (leader: any) => {
+    if (!leader) return;
     gameStore.startGame(leader);
-    router.push("/game");
-}
+    navigateTo("/game");
+};
 
-const cancelGame = () => {
-    gameStore.endGame();
-    router.push("/");
-}
+onMounted(async () => {
+    try {
+        const res = await fetch("/data/worldData.json");
+        worldCountries.value = await res.json();
+    } catch (error) {
+        console.error("Failed to load world countries:", error);
+    } finally {
+        isLoading.value = false;
+    }
+});
 </script>
 
 <template>
-    <v-container class="d-flex flex-column justify-center align-center" style="height: 100vh;">
-        <h1>Select Your Leader</h1>
-        <v-row class="justify-center">
-            <v-col v-for="leader in leaders" :key="leader" cols="12" md="6" lg="4">
-                <v-card class="pa-4 text-center" @click="selectLeader(leader)">
-                    <v-card-title>{{ leader }}</v-card-title>
+    <v-container class="select-character-page">
+        <h1 class="text-center mb-6">Select Your Leader</h1>
+
+        <v-progress-circular v-if="isLoading" indeterminate color="primary" size="50"></v-progress-circular>
+
+        <v-row v-else class="justify-center">
+            <v-col v-for="item in worldCountries" :key="item.name" cols="12" sm="6" lg="4">
+                <v-card class="pa-4 item-card" @click="selectLeader(item)">
+                    <v-card-title class="text-center">{{ item.country }}</v-card-title>
+                    <v-card-text class="pb-0">Leader: {{ item.name }}</v-card-text>
+                    <v-card-text class="pb-0">Type: {{ item.countryType }}</v-card-text>
                 </v-card>
             </v-col>
         </v-row>
 
-        <!-- Cancel Button -->
-        <v-btn color="red" class="mt-4" @click="showCancelDialog = true">
-            Cancel Game
-        </v-btn>
-
-        <!-- Confirmation -->
-        <v-dialog v-model="showCancelDialog" width="400">
-            <v-card>
-                <v-card-title>Cancel Game?</v-card-title>
-                <v-card-text>
-                    Are you sure you want to cancel the game? This will count as a loss.
-                </v-card-text>
-                <v-card-actions>
-                    <v-btn @click="showCancelDialog = false">No</v-btn>
-                    <v-btn color="red" @click="cancelGame">Yes, Cancel</v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
+        <CancelGameDialog @cancelGame="navigateTo('/')" />
     </v-container>
 </template>
 
+<style scoped>
+.select-character-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.leader-card {
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.leader-card:hover {
+    transform: scale(1.05);
+}
+</style>
